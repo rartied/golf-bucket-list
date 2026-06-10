@@ -165,11 +165,16 @@ body {
   display: flex;
   background: var(--canvas);
   border-top: 1px solid rgba(14, 15, 12, 0.08);
-  padding-bottom: var(--safe-bottom);
+  padding-bottom: max(var(--safe-bottom), 8px);
   padding-left:   var(--safe-left);
   padding-right:  var(--safe-right);
   flex-shrink: 0;
   z-index: 100;
+  /* Fixed to viewport bottom — avoids dvh quirks on iPhone */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .tab-item {
@@ -209,8 +214,9 @@ body {
 }
 
 @media (min-width: 768px) {
-  .tab-bar    { display: none; }
+  .tab-bar     { display: none; }
   .mobile-only { display: none !important; }
+  .main        { padding-bottom: 0; }
 }
 @media (max-width: 767px) {
   .desktop-only { display: none !important; }
@@ -256,6 +262,8 @@ body {
   display: flex;
   flex-direction: column;
   background: var(--canvas-soft);
+  /* Clear space for the fixed tab bar */
+  padding-bottom: calc(var(--tab-h) + max(var(--safe-bottom), 8px));
 }
 
 .center-state {
