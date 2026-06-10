@@ -40,7 +40,17 @@
 /* ── Reset ────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body { height: 100%; overscroll-behavior: none; }
+html {
+  height: 100%;
+  height: -webkit-fill-available;
+  overscroll-behavior: none;
+}
+
+body {
+  height: 100%;
+  min-height: -webkit-fill-available;
+  overscroll-behavior: none;
+}
 
 body {
   font-family: var(--font-body);
@@ -58,7 +68,9 @@ body {
 .app {
   display: flex;
   flex-direction: column;
+  /* dvh fallback then webkit fill for iOS PWA standalone */
   height: 100dvh;
+  height: -webkit-fill-available;
   overflow: hidden;
   background: var(--canvas-soft);
 }
@@ -165,7 +177,7 @@ body {
   display: flex;
   background: var(--canvas);
   border-top: 1px solid rgba(14, 15, 12, 0.08);
-  padding-bottom: max(var(--safe-bottom), 8px);
+  padding-bottom: max(env(safe-area-inset-bottom), 20px);
   padding-left:   var(--safe-left);
   padding-right:  var(--safe-right);
   flex-shrink: 0;
@@ -1035,7 +1047,7 @@ body {
 /* Page bg = darkest; cards = slightly lifted */
 [data-theme="dark"] .app,
 [data-theme="dark"] .main         { background: var(--canvas); }
-[data-theme="dark"] .header        { background: #090b08; border-bottom-color: transparent; }
+[data-theme="dark"] .header        { background: var(--canvas); border-bottom-color: transparent; }
 [data-theme="dark"] .header-title  { color: #ffffff; }
 [data-theme="dark"] .view-toggle   { background: rgba(255, 255, 255, 0.08); }
 [data-theme="dark"] .toggle-btn    { color: rgba(255, 255, 255, 0.5); }
