@@ -24,7 +24,6 @@ export default function DiaryView({ courses, onEdit }) {
 
       {courses.length === 0 ? (
         <div className="empty-state">
-          <div className="empty-icon">⛳</div>
           <h2>No rounds logged yet</h2>
           <p>Check off a course you've played to start your diary</p>
         </div>

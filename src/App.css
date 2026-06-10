@@ -65,7 +65,8 @@ body {
 
 /* ── Header ───────────────────────────────────────────── */
 .header {
-  background: var(--ink);
+  background: var(--canvas-soft);
+  border-bottom: none;
   padding-left:  max(20px, var(--safe-left));
   padding-right: max(20px, var(--safe-right));
   padding-top:   var(--safe-top);
@@ -93,7 +94,7 @@ body {
   font-weight: 900;
   font-size: 1.1rem;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: var(--ink);
   white-space: nowrap;
 }
 
@@ -110,7 +111,7 @@ body {
 /* Desktop nav toggle */
 .view-toggle {
   display: flex;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(14, 15, 12, 0.06);
   border-radius: var(--r-lg);
   padding: 3px;
   gap: 2px;
@@ -120,7 +121,7 @@ body {
 .toggle-btn {
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--mute);
   padding: 6px 14px;
   border-radius: var(--r-md);
   cursor: pointer;
@@ -991,7 +992,7 @@ body {
 
 /* Theme toggle button */
 .theme-toggle {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(14, 15, 12, 0.07);
   border: none;
   border-radius: var(--r-pill);
   width: 36px;
@@ -1000,7 +1001,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--mute);
   cursor: pointer;
   flex-shrink: 0;
   transition: background 0.15s, color 0.15s;
@@ -1008,8 +1009,8 @@ body {
 }
 
 .theme-toggle:active {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: rgba(14, 15, 12, 0.14);
+  color: var(--ink);
 }
 
 /* ── Dark Mode ────────────────────────────────────────── */
@@ -1026,7 +1027,12 @@ body {
 /* Page bg = darkest; cards = slightly lifted */
 [data-theme="dark"] .app,
 [data-theme="dark"] .main         { background: var(--canvas); }
-[data-theme="dark"] .header       { background: #090b08; }
+[data-theme="dark"] .header        { background: #090b08; border-bottom-color: transparent; }
+[data-theme="dark"] .header-title  { color: #ffffff; }
+[data-theme="dark"] .view-toggle   { background: rgba(255, 255, 255, 0.08); }
+[data-theme="dark"] .toggle-btn    { color: rgba(255, 255, 255, 0.5); }
+[data-theme="dark"] .theme-toggle  { background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.75); }
+[data-theme="dark"] .theme-toggle:active { background: rgba(255, 255, 255, 0.2); color: #ffffff; }
 
 [data-theme="dark"] .course-card,
 [data-theme="dark"] .diary-card,

@@ -33,7 +33,6 @@ export default function ListView({ courses, onSelect, onVisit }) {
     return (
       <div className="list-view">
         <div className="empty-state">
-          <div className="empty-icon">⛳</div>
           <h2>Your bucket list is empty</h2>
           <p>Hit "Add Course" to log your first dream destination</p>
         </div>
